@@ -2,7 +2,7 @@
 
 One-click benchmark framework comparing **DQN**, **Double-DQN**, and **PPO** on OpenAI Gymnasium's CarRacing-v3 environment. Built with PyTorch.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/camcimahir/car_racing_gym_DQN_RL/blob/main/notebooks/run_benchmark.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/camcimahir/car_racing_gym_RL/blob/main/notebooks/run_benchmark.ipynb)
 
 > **Try it now** — click the badge above to run the benchmark in Google Colab with zero setup.
 
@@ -73,4 +73,4 @@ The `docs/` folder contains a static site designed for GitHub Pages. To enable i
 1. Go to your repo **Settings → Pages**
 2. Set source to **Deploy from a branch**
 3. Set branch to `main` and folder to `/docs`
-4. Save — your site will be live at `https://camcimahir.github.io/car_racing_gym_DQN_RL/`
+4. Save — your site will be live at `https://camcimahir.github.io/car_racing_gym_RL/`
