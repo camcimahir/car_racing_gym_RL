@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RL Benchmark — CarRacing-v3</title>
+  <meta name="description" content="One-click benchmark comparing DQN, Double-DQN, and PPO on CarRacing-v3." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>RL Benchmark — CarRacing-v3</h1>
+    <p>One-click framework comparing DQN, Double-DQN, and PPO. Built with PyTorch &amp; Gymnasium.</p>
+    <div class="header-links">
+      <a href="https://github.com/camcimahir/car_racing_gym_DQN_RL" id="github-link">GitHub</a>
+    </div>
+  </header>
+
+  <!-- ── Task 9: Run the benchmark ── -->
+  <section class="section" id="run">
+    <h2>Task 9 — RL Testing Framework</h2>
+    <p>Train all four algorithms on CarRacing-v3 and get reward curves, loss plots, and a leaderboard in one run.</p>
+
+    <div class="run-bar">
+      <a id="run-colab-btn"
+         href="https://colab.research.google.com/github/camcimahir/car_racing_gym_DQN_RL/blob/main/notebooks/run_benchmark.ipynb"
+         target="_blank" rel="noopener"
+         class="btn btn-primary">
+        ▶ Run in Google Colab
+      </a>
+      <button class="btn" data-pdf="Task 9.pdf" data-title="Task 9 — RL Testing Framework">
+        Read report (PDF)
+      </button>
+    </div>
+
+    <div class="code-block">
+<pre><span class="c"># or run locally</span>
+pip install torch gymnasium[box2d] matplotlib opencv-python
+
+<span class="k">python</span> <span class="f">rl_benchmark.py</span> --mode smoke       <span class="c"># ~3-5 min per algo</span>
+<span class="k">python</span> <span class="f">rl_benchmark.py</span> --mode medium      <span class="c"># ~30 min per algo</span>
+<span class="k">python</span> <span class="f">rl_benchmark.py</span> --mode full        <span class="c"># overnight</span>
+<span class="k">python</span> <span class="f">rl_benchmark.py</span> --algos dqn ppo   <span class="c"># run a subset</span></pre>
+    </div>
+  </section>
+
+  <!-- ── Algorithms ── -->
+  <section class="section" id="algorithms">
+    <h2>Algorithms</h2>
+    <table class="algo-table">
+      <thead>
+        <tr>
+          <th>Algorithm</th>
+          <th>Architecture</th>
+          <th>Optimizer</th>
+          <th>Loss</th>
+          <th>Key detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Random</strong></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td>Sanity-check baseline</td>
+        </tr>
+        <tr>
+          <td><strong>DQN</strong></td>
+          <td>48×48 CNN</td>
+          <td>Adam</td>
+          <td>MSE</td>
+          <td>Single-DQN target, ε-greedy</td>
+        </tr>
+        <tr>
+          <td><strong>Double-DQN</strong></td>
+          <td>84×84 CNN</td>
+          <td>RMSProp</td>
+          <td>Huber</td>
+          <td>Double-DQN selection, tanh reward shaping</td>
+        </tr>
+        <tr>
+          <td><strong>PPO</strong></td>
+          <td>96×96 CNN</td>
+          <td>Adam</td>
+          <td>Clipped surrogate</td>
+          <td>Continuous actions, GAE, entropy reg.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── All Tasks ── -->
+  <section class="section" id="tasks">
+    <h2>All Tasks</h2>
+    <ul class="task-list">
+
+      <li class="task-item">
+        <h3>Task 6 — PPO with Continuous Actions</h3>
+        <p>Actor-Critic PPO with shared CNN trunk, separate actor/critic heads, GAE, and entropy regularization.</p>
+        <div class="task-item-links">
+          <button class="btn" data-pdf="Task 6.pdf" data-title="Task 6 — PPO">Read report</button>
+          <a href="https://github.com/camcimahir/car_racing_gym_DQN_RL/tree/main/task%206" class="code-link" target="_blank" rel="noopener">View code</a>
+        </div>
+      </li>
+
+      <li class="task-item">
+        <h3>Task 7 — Paper-Close DQN</h3>
+        <p>Reproduces the DQN paper with Double-DQN target selection, RMSProp, Huber loss, and linear ε-annealing.</p>
+        <div class="task-item-links">
+          <button class="btn" data-pdf="Task_7.pdf" data-title="Task 7 — DQN Paper">Read report</button>
+          <a href="https://github.com/camcimahir/car_racing_gym_DQN_RL/tree/main/task%207" class="code-link" target="_blank" rel="noopener">View code</a>
+        </div>
+      </li>
+
+      <li class="task-item">
+        <h3>Task 8 — DQN with CNN</h3>
+        <p>Streamlined DQN with 48×48 CNN, Adam optimizer, MSE loss, and multiplicative ε-decay.</p>
+        <div class="task-item-links">
+          <button class="btn" data-pdf="Task 8.pdf" data-title="Task 8 — DQN CNN">Read report</button>
+          <a href="https://github.com/camcimahir/car_racing_gym_DQN_RL/tree/main/task%208" class="code-link" target="_blank" rel="noopener">View code</a>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- PDF Modal -->
+  <div class="modal-overlay" id="pdf-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Report</h3>
+        <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      </div>
+      <iframe id="modal-iframe" title="PDF Viewer"></iframe>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>AIEA Lab · CarRacing-v3 · PyTorch &amp; Gymnasium</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
